@@ -1,0 +1,76 @@
+package orgBase;
+
+import java.io.File;
+import java.io.IOException;
+
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.ie.InternetExplorerDriver;
+
+public class BaseClass {
+	
+	static WebDriver driver ;
+	//Browser Launch
+	static void browserLaunch(String browser)
+	{
+		if(browser.equals("Chrome"))
+		{
+		System.setProperty("webdriver.chrome.driver", "./Driver/chromedriver.exe");
+		driver = new ChromeDriver();
+	    }
+		else if(browser.equals("Firefox")) {
+			System.setProperty("webdriver.gecko.driver", "./Driver/geckodriver.exe");
+			driver = new FirefoxDriver();
+		}
+		else  {
+			System.setProperty("webdriver.ie.driver", "./Driver/IEDriverServer.exe");
+			driver = new InternetExplorerDriver();
+		}	
+	}
+	//Launc Url
+	public static void launchUrl(String url) {
+		driver.get(url);
+		driver.manage().window().maximize();
+	}
+	
+	public static String getTheTitle()
+	{
+	String title = driver.getTitle();
+	System.out.println(title);
+	return title;
+	}
+	
+	public static void getTheUrl()
+	{
+		String url = driver.getCurrentUrl();
+		System.out.println(url);
+	}
+	
+	public static void fillTheTextBox(WebElement e1,String value)
+	{
+		e1.sendKeys(value);
+	}
+	
+	public static void TakeScreenshot(String savelocation) throws IOException
+	{
+        TakesScreenshot tk = (TakesScreenshot)driver;
+		File temp = tk.getScreenshotAs(OutputType.FILE);
+		File perm = new File(savelocation);
+		FileUtils.copyFile(temp, perm);
+		System.out.println("Done");
+	}
+	
+	public static void clickTheButton(WebElement e) {
+	 e.click();
+	}
+	
+	public static void quitBrowser(String quitmsg) {
+		if(quitmsg.equals("close"));
+		driver.quit();
+	}
+}

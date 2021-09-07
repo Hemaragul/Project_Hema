@@ -1,0 +1,20 @@
+package org;
+
+import org.openqa.selenium.WebDriver;
+
+public class sample {
+	
+	
+	public static void main(String[] args) {
+	//To configure chrome path
+		System.setProperty("webdriver.chrome.driver", "C:\\Users\\hemam\\Downloads\\chromedriver_win32");
+		//System.setProperty("webdriver.chrome.driver", "./Driver/chromedriver.exe");
+	
+	//	To launch the browser
+		WebDriver driver = new ChromDriver();
+		
+		driver.get("https://www.facebook.com/");
+		
+	}
+
+}

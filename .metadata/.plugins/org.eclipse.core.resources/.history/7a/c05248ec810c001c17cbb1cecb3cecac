@@ -1,0 +1,29 @@
+package orgBase;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+public class BaseClass {
+	static WebDriver driver ;
+	static void browserLaunch(String browser)
+	{
+		if(browser.equals("Chrome"))
+		{
+		System.setProperty("webdriver.chrome.driver", "./Driver/chromedriver.exe");
+		driver = new ChromeDriver();
+	    }
+		
+		else if(browser.equals("Firefox")) {
+			System.setProperty("webdriver.gecko.driver", "./Driver/geckodriver.exe");
+			driver = new FirefoxDriver();
+		}
+		else  {
+			System.setProperty("webdriver.ie.driver", "./Driver/IEDriverServer.exe");
+			driver = new FirefoxDriver();
+		}
+	}
+	
+	
+
+}

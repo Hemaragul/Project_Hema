@@ -1,0 +1,20 @@
+package org;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Waits {
+	
+	//Waits
+	// 1.Static Wait
+	// 2.Dynamic Wait
+	
+	WebDriver driver = new ChromeDriver();
+	
+	// Static Wait
+	Thread.sleep(3000);
+	
+
+}
